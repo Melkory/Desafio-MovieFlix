@@ -1,9 +1,6 @@
 package com.devsuperior.movieflix.dto;
 
-import com.devsuperior.movieflix.entities.Genre;
 import com.devsuperior.movieflix.entities.Movie;
-
-import java.util.Set;
 
 public class MovieDetailsDTO {
 
@@ -15,7 +12,7 @@ public class MovieDetailsDTO {
     private String synopsis;
     private GenreDTO genre;
 
-    public MovieDetailsDTO( Movie p, Genre genre ) {
+    public MovieDetailsDTO() {
     }
 
     public MovieDetailsDTO( Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, GenreDTO genre ) {

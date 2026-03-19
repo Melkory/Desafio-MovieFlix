@@ -1,6 +1,5 @@
 package com.devsuperior.movieflix.services;
 
-import com.devsuperior.movieflix.dto.MovieCardDTO;
 import com.devsuperior.movieflix.dto.MovieDetailsDTO;
 import com.devsuperior.movieflix.entities.Movie;
 import com.devsuperior.movieflix.projections.MovieProjection;
@@ -37,7 +36,7 @@ public class MovieService {
 
         List<Movie> entities = movieRepository.searchMoviesWithGenres(movieIds);
         entities = (List<Movie>) Utils.replace(page.getContent(), entities);
-        List<MovieDetailsDTO> dtos = entities.stream().map(p -> new MovieDetailsDTO(p, p.getGenre())).toList();
+        List<MovieDetailsDTO> dtos = entities.stream().map(p -> new MovieDetailsDTO(p)).toList();
 
         return new PageImpl<>(dtos, page.getPageable(), page.getTotalElements());
     }
