@@ -24,7 +24,6 @@ public class Genre {
     private Set<Movie> movies = new HashSet<>();
 
     public Genre() {
-
     }
 
     public Genre(Long id, String name) {
