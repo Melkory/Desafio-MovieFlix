@@ -2,23 +2,25 @@ package com.devsuperior.movieflix.dto;
 
 import com.devsuperior.movieflix.entities.Movie;
 import com.devsuperior.movieflix.entities.Review;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class MovieCardDTO {
+public class MovieDetailsReviewDTO {
 
     private Long id;
     private String title;
     private String subTitle;
     private Integer year;
     private String imgUrl;
+    private List<ReviewDTO> reviews = new ArrayList<>();
 
-    public MovieCardDTO() {
+    public MovieDetailsReviewDTO() {
     }
 
-    public MovieCardDTO( Long id, String title, String subTitle, Integer year, String imgUrl ) {
+    public MovieDetailsReviewDTO( Long id, String title, String subTitle, Integer year, String imgUrl ) {
         this.id = id;
         this.title = title;
         this.subTitle = subTitle;
@@ -26,12 +28,17 @@ public class MovieCardDTO {
         this.imgUrl = imgUrl;
     }
 
-    public MovieCardDTO( Movie entity) {
+    public MovieDetailsReviewDTO( Movie entity) {
         this.id = entity.getId();
         this.title = entity.getTitle();
         this.subTitle = entity.getSubTitle();
         this.year = entity.getYear();
         this.imgUrl = entity.getImgUrl();
+    }
+
+    public MovieDetailsReviewDTO( Movie entity, List<Review> reviews) {
+        this(entity);
+        reviews.forEach(rev -> this.reviews.add(new ReviewDTO(rev)));
     }
 
     public Long getId() {
@@ -72,5 +79,13 @@ public class MovieCardDTO {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public List<ReviewDTO> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews( List<ReviewDTO> reviews ) {
+        this.reviews = reviews;
     }
 }
